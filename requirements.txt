@@ -1,0 +1,5 @@
+# Core dependencies – pinned to known-good versions
+flask==3.1.0
+pandas==2.2.3
+pytest==8.3.4
+flake8==7.1.1

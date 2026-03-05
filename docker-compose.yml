@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  dashboard:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_HOST=0.0.0.0
+      - FLASK_PORT=5000
+      - FLASK_DEBUG=0
+      - FLASK_ENV=production
+      - DATA_PATH=Data/StoreSales.json
+      - DB_PATH=sales_data.db
+      - CACHE_TTL_SECONDS=300
+    volumes:
+      - ./Data:/app/Data:ro # mount data directory read-only
+      - db-data:/app # persist the SQLite database
+    restart: unless-stopped
+
+volumes:
+  db-data:
